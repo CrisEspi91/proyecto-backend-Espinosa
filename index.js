@@ -1,37 +1,43 @@
-class usuario {
-    nombre= ''
-    apellido = ''
-    libros = [{}]
-    mascotas = []
-
+class Usuario {
     constructor(nombre, apellido, libros, mascotas){
-        this.nombre = nombre
-        this.apellido = apellido
-        this.libros = libros
+        this.nombre = nombre,
+        this.apellido = apellido,
+        this.libros = libros,
         this.mascotas = mascotas
     }
 
     getFullName(){
-        `Usuario: ${this.nombre} ${this.apellido}`
-        console.log(getFullName())
+        return `Usuario: ${this.nombre} ${this.apellido}`
+        
     }
 
-//     addMascota(){
-//         this.mascotas.push('lagarto')
-//         console.log(addMascota())
-//     }
+        addMascota(mascota){
+           return  this.mascotas.push(mascota)
+        }
 
-//     countMascotas(){
-//         return this.mascotas.length
-//     }
+        countMascotas(){ 
+            return this.mascotas.length
+        }
 
-//     addBook(){
-//         this.libros.push({nombre:'El hombre mas rico de babilonia'})
-//     }
+        addBook(titulo, autor){
+            this.libros.push({titulo, autor})
+            }
 
-//     getBookNames(){
-//         return Array[this.libros.nombre]
-//     }
-// }
+        getBookNames(){
+            const bookName = []
+            this.libros.forEach(libro => {bookName.push(libro.titulo) });
+            return bookName
+        }
+    }
 
-//  new usuario('Cristobal', 'Espinosa', [{nombre:'El hombre mas rico de babilonia'},{nombre:'Padre rico, padre pobre'}], ['perro','gato','caballo'])
+     const usuario1 = new Usuario('Cristobal', 'Espinosa', [{titulo:'El hombre mas rico de babilonia', autor:'George Classon'},{titulo:'Padre rico, padre pobre',autor:'Kiyosaki'}], ['perro','gato','caballo'])
+
+     console.log(usuario1.getFullName())
+     console.log({ cantidad: usuario1.countMascotas() })
+     usuario1.addMascota('cacatua')
+     console.log({ cantidad: usuario1.countMascotas() })
+
+     usuario1.addBook('la nacion','carlos quinto')
+
+    const booksName = usuario1.getBookNames()
+    console.log(booksName)
