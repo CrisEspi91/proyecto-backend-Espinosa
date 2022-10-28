@@ -1,0 +1,21 @@
+<div>
+    <h1 class="title">Lista de productos</h1>
+
+    <table>
+        <tr>
+            <th>Titulo</th>
+            <th>precio</th>
+            <th>miniatura</th>
+        </tr>
+        {{#if productos.length}}
+        {{#each productos}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.price}}</td>
+            <td><img height="72px" width="72px" src="{{this.thumbnail}}" alt=""></td>
+        </tr>
+        {{/each}}
+        {{/if}}
+    </table>
+    <a href="/"><button>Volver a formulario de carga</button></a>
+</div>

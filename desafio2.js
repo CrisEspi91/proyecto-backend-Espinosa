@@ -39,7 +39,6 @@ class Desafio{
 }
 
 const documento=new Desafio('desafio')
-documento.getAll().then( console.log )
 documento.save({
     title: 'Calculadora',
     price: 234.56,
@@ -47,25 +46,31 @@ documento.save({
     id: 2
 })
  
-
+ 
 
 app.get('/productos',(req,res)=>{
-    documento.getAll().then(lista =>{
-        res.json(JSON.parse(lista))
+    documento.getAll()
+    .then(lista =>{
+        JSON.parse(lista)
+    })
+    .then(listaParse => {
+        res.json(listaParse)
     })
 })
 
 app.get('/productoRandom',(req,res)=>{
     documento.getAll()
-    .then(lista =>{
+    .then(lista =>
         JSON.parse(lista)
-    })
-    .then(listaParse =>{
+    )
+    .then(listaParse =>
         lista[randomFunction(listaParse.length)]
-    })
-    .then(itemLista => {
+    )
+    .then(itemLista => 
         res.json(itemLista)
-    })
+    )
 })
+
+
 
 const server = app.listen(PORT, ()=> console.log(`Server listening on PORT ${PORT}`))
